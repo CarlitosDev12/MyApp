@@ -67,8 +67,7 @@ int main()
   else
   {
     std::cout << "Failed" << std::endl;
-    std::cout << "FATAL ERROR : Can't load font" << std::endl;
-    return 1;
+    std::cout << "FATAL : Can't load font" << std::endl;
   }
   std::cout << "Path : ";
   if(std::filesystem::exists(Path))
