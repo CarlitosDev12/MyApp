@@ -60,7 +60,7 @@ int main()
   sf::Clock TextBarClock;
   sf::Font Font;
   std::cout << "Font : ";
-  if(Font.openFromFile("app/src/main/assets/roboto/Roboto-Regular.ttf"))
+  if(Font.openFromFile("roboto/Roboto-Regular.ttf"))
   {
     std::cout << "Loaded" << std::endl;
   }
