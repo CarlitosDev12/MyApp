@@ -1,11 +1,16 @@
+plugins {
+    id 'com.android.application'
+}
+
 android {
+    namespace "com.carlos.myapp"
+    compileSdk 33
+
     defaultConfig {
         applicationId "com.carlos.myapp"
-        
         minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.4.0-beta.1"
     }
 }
-
