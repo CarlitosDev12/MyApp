@@ -58,11 +58,19 @@ int main()
   std::string LineInput = "";
   std::string Input = "";
   sf::Clock TextBarClock;
+  sf::FileInputStream FontStream;
   sf::Font Font;
   std::cout << "Font : ";
-  if(Font.openFromFile("roboto/Roboto-Regular.ttf"))
+  if(FontStream.open("roboto/RobotoRegular.ttf"))
   {
-    std::cout << "Loaded" << std::endl;
+    if(Font.openFromStream(FontStream))
+    {
+      std::cout << "Loaded" << std::endl;
+    }
+    else
+    {
+      std::cout << "ERROR : Can't open font from stream" << std::endl;
+    }
   }
   else
   {
