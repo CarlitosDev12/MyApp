@@ -60,14 +60,15 @@ int main()
   sf::Clock TextBarClock;
   sf::Font Font;
   std::cout << "Font : ";
-  if(Font.openFromFile("roboto/Roboto-Regular.ttf"))
+  bool FontLoaded = Font.openFromFile("roboto/Roboto-Regular.ttf");
+  if(FontLoaded)
   {
     std::cout << "Loaded" << std::endl;
   }
   else
   {
     std::cout << "Failed" << std::endl;
-    std::cout << "FATAL : Can't load font" << std::endl;
+    std::cout << "ERROR : Can't load font" << std::endl;
   }
   std::cout << "Path : ";
   if(std::filesystem::exists(Path))
@@ -1009,8 +1010,11 @@ int main()
     std::string Union = Buffer + LineInput + TextBar;
     Text.setString(Union);
     Screen.clear(sf::Color::Black);
-    Screen.draw(TimeFont);
-    Screen.draw(Text);
+    if(FontLoaded)
+    {
+      Screen.draw(TimeFont);
+      Screen.draw(Text);
+    }
     Screen.display();
   }
 }
