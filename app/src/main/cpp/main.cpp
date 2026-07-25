@@ -35,7 +35,7 @@ int main()
   std::string SystemState = "<INIT>";
   std::string Username = "Carlos";
   std::string TextBar = "|";
-  std::string Version = "v1.4.0-beta.2";
+  std::string Version = "v1.4.0-beta.3";
   std::string PageBar = "";
   std::string DataSave1 = "";
   std::string DataSave2 = "";
