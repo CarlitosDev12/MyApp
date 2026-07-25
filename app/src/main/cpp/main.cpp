@@ -1,3 +1,4 @@
+#include <SFML/Main.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/FileInputStream.hpp>
@@ -61,7 +62,7 @@ int main()
   sf::FileInputStream FontStream;
   sf::Font Font;
   std::cout << "Font : ";
-  if(FontStream.open("roboto/RobotoRegular.ttf"))
+  if(FontStream.open("roboto/Roboto-Regular.ttf"))
   {
     if(Font.openFromStream(FontStream))
     {
