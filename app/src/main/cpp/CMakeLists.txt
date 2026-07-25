@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.18.1)
 project("myapp")
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Ruta donde están las librerías .so de SFML
 set(SFML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
 
