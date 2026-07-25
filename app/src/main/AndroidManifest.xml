@@ -2,5 +2,5 @@
     android:label="MyApp" 
     
     android:icon="@mipmap/ic_launcher"
-    android:hasCode="false">
+    android:hasCode="true">
 
