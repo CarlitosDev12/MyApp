@@ -35,7 +35,7 @@ int main()
   std::string SystemState = "<INIT>";
   std::string Username = "Carlos";
   std::string TextBar = "|";
-  std::string Version = "v1.4.0-beta.1";
+  std::string Version = "v1.4.0-beta.2";
   std::string PageBar = "";
   std::string DataSave1 = "";
   std::string DataSave2 = "";
@@ -60,7 +60,7 @@ int main()
   sf::Clock TextBarClock;
   sf::Font Font;
   std::cout << "Font : ";
-  if(Font.openFromFile("roboto/Roboto-Regular.ttf"))
+  if(Font.openFromFile("app/src/main/assets/roboto/Roboto-Regular.ttf"))
   {
     std::cout << "Loaded" << std::endl;
   }
