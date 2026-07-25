@@ -1,5 +1,7 @@
 #include <SFML/Main.hpp>
 #include <SFML/Graphics.hpp>
+#include <android/sensor.h>
+#include <android/configuration.h>
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/FileInputStream.hpp>
 #include <SFML/System/MemoryInputStream.hpp>
@@ -23,7 +25,7 @@ enum Screens
   MyCalculator,
   FunCommands
 };
-int main()
+int main(int argc, char *argv[])
 {
   Screens State = Init;
   int SubState = 0;

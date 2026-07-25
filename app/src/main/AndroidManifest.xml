@@ -1,32 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+cmake_minimum_required(VERSION 3.16)
+project(MyApp)
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+# Encuentra SFML (asegúrate de que apunte a tu SDK/NDK o ruta de SFML)
+find_package(SFML 3.0 COMPONENTS graphics window system REQUIRED) # O la versión 2.6 según uses
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="MyApp"
-        android:hasCode="true"
-        android:supportsRtl="true"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+add_executable(MyApp 
+    app/src/main/cpp/main.cpp
+)
 
-        <activity
-            android:name="android.app.NativeActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="true">
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="main" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-    </application>
-
-</manifest>
+# Enlaza las librerías de SFML y OBLIGATORIAMENTE las del sistema Android para gráficos
+target_link_libraries(MyApp PRIVATE
+    sfml-graphics
+    sfml-window
+    sfml-system
+    EGL
+    GLESv2
+    android
+    log
+)
