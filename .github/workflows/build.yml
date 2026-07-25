@@ -2,8 +2,8 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "main", "master" ]  # Se activa al subir cambios a la rama main o master
-  workflow_dispatch:               # Permite ejecutar la compilación manualmente desde la pestaña Actions
+    branches: [ "main", "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,18 +14,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Configurar Java 17 (requerido por las versiones recientes de Gradle/Android SDK)
+      # 2. Configurar Java 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 3. Configurar Android SDK y NDK (necesario para compilar C++ / SFML)
+      # 3. Configurar Android SDK
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # 4. Dar permisos de ejecución al script ejecutable de Gradle
+      # 4. Dar permisos de ejecución al script gradlew
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      # 5. Compilar el APK de Android
+      - name: Build APK with Gradle
+        run: ./gradlew assembleDebug
+
+      # 6. Subir el APK a la sección de Artifacts
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MyApp-APK
+          path: app/build/outputs/apk/debug/*.apk
