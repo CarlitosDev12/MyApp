@@ -62,22 +62,40 @@ int main()
   sf::FileInputStream FontStream;
   sf::Font Font;
   std::cout << "Font : ";
-  if(FontStream.open("roboto/Roboto-Regular.ttf"))
-  {
-    if(Font.openFromStream(FontStream))
+  #if defined(SFML_SYSTEM_ANDROID)
+    #include <android/asset_manager.h>
+    #include <android/asset_manager_jni.h>
+    #include <SFML/System/NativeActivity.hpp>
+    bool Loaded = false;
+    auto Activity = sf::getNativeActivity();
+    if(activity && activity->assetManager)
+    {
+      AAsset* Asset = AAssetManager_open(activity->assetManager, "roboto/Roboto-Regular.ttf", AASSET_MODE_BUFFER);
+      if(Asset)
+      {
+        if(Font.openFromMemory(AAsset_getBuffer(Asset), AAsset_getLeght(Asset)))
+        {
+          std::cout << "Loaded" << std::endl;
+          Loaded = true;
+        }
+        AAsset_close(Asset);
+      }    
+    }
+    if(!Loaded)
+    {
+      std::cout << "Failed" << std::endl;
+    }
+  #else
+    if(Font.openFromFile("roboto/Roboto-Regular.ttf"))
     {
       std::cout << "Loaded" << std::endl;
     }
     else
     {
-      std::cout << "ERROR : Can't open font from stream" << std::endl;
+      std::cout << "Failed" << std::endl;
+      std::cout << "ERROR : Can't load font" << std::endl;
     }
-  }
-  else
-  {
-    std::cout << "Failed" << std::endl;
-    std::cout << "ERROR : Can't load font" << std::endl;
-  }
+  #endif
   std::cout << "Path : ";
   if(std::filesystem::exists(Path))
   {

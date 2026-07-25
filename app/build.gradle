@@ -16,11 +16,29 @@ android {
         ndk {
             abiFilters 'arm64-v8a'
         }
+
+        // --- ESTO ES LO QUE FALTABA ---
+        externalNativeBuild {
+            cmake {
+                // Obliga a Gradle a empaquetar la librería C++ necesaria para SFML
+                arguments "-DANDROID_STL=c++_shared"
+                // Opciones del compilador C++
+                cppFlags "-std=c++20"
+            }
+        }
     }
 
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
+            version "3.18.1"
+        }
+    }
+
+    // Asegura que las librerías .so de jniLibs se incluyan sin comprimir
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
         }
     }
 }
