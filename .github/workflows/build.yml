@@ -21,9 +21,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # 3. Configurar Android SDK
-      - name: Set up Android SDK
+      # 3. Configurar Android SDK e instalar CMake y NDK automáticamente
+      - name: Set up Android SDK & Tools
         uses: android-actions/setup-android@v3
+
+      - name: Install NDK and CMake via SDKManager
+        run: |
+          sdkmanager --install "ndk;25.1.8937393" "cmake;3.22.1"
 
       # 4. Dar permisos de ejecución al script gradlew
       - name: Grant execute permission for gradlew
