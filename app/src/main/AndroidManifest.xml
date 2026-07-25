@@ -12,7 +12,7 @@
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
 
         <activity
-            android:name="org.sfmldev.SFMLActivity"
+            android:name="android.app.NativeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true">
 
