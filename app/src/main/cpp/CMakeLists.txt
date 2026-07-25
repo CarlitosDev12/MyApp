@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18.1)
+cmake_minimum_required(VERSION 3.22.1)
 project("myapp")
 
 set(CMAKE_CXX_STANDARD 20)
@@ -27,8 +27,6 @@ target_link_libraries(main
     sfml-graphics
     sfml-window
     sfml-system
-    sfml-audio
-    sfml-network
     android
     log
 )

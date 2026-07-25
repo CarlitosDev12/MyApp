@@ -59,7 +59,6 @@ int main()
   std::string LineInput = "";
   std::string Input = "";
   sf::Clock TextBarClock;
-  sf::FileInputStream FontStream;
   sf::Font Font;
   std::cout << "Font : ";
   if(Font.openFromFile("roboto/Roboto-Regular.ttf"))
