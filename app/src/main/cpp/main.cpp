@@ -48,7 +48,7 @@ int main()
   std::map<std::string, std::string> Dts;
   std::string Key;
   std::string Data;
-  sf::RenderWindow Screen(sf::VideoMode::getDesktopMode(), "Screen");
+  sf::RenderWindow Screen(sf::VideoMode({1080, 1920}), "Screen");
   Screen.setFramerateLimit(60);
   #if defined(SFML_SYSTEM_ANDROID) || defined(SFML_SYSTEM_IOS)
     sf::Keyboard::showVirtualKeyboard(true);
