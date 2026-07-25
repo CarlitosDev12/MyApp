@@ -27,6 +27,8 @@ target_link_libraries(main
     sfml-graphics
     sfml-window
     sfml-system
+    sfml-audio
+    sfml-network
     android
     log
 )
