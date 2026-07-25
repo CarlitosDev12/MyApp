@@ -17,6 +17,8 @@ set_target_properties(sfml-graphics PROPERTIES IMPORTED_LOCATION ${SFML_DIR}/lib
 # Definir la librería principal que busca NativeActivity (libmain.so)
 add_library(main SHARED main.cpp)
 
+target_include_directories(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 # Enlazar todo con Android
 target_link_libraries(main
     sfml-graphics
