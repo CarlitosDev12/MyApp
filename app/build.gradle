@@ -1,3 +1,7 @@
+plugins {
+    id 'com.android.application'
+}
+
 android {
     namespace 'com.carlos.myapp'
     compileSdk 34
@@ -11,6 +15,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         
+        // Filtro para compilar únicamente en 64 bits (donde tienes tus .so de SFML)
         ndk {
             abiFilters 'arm64-v8a'
         }
@@ -41,4 +46,8 @@ android {
             version '3.22.1'
         }
     }
+}
+
+dependencies {
+    // Tus dependencias aquí si las necesitas
 }
