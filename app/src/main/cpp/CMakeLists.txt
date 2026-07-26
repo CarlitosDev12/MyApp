@@ -7,33 +7,31 @@ set(CMAKE_CXX_STANDARD_REQUIRED 20)
 # 1. Indicar dónde están los archivos .hpp de SFML
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-# 2. Definir la ruta correcta de las librerías según tu estructura actual
-set(SFML_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}) 
+# 2. Definir la ruta de las librerías según la arquitectura actual
+set(SFML_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
 
-# 3. Verificar si existen los binarios para esta arquitectura específica
-if(EXISTS "${SFML_LIB_DIR}/libsfml-graphics.so")
-    add_library(sfml-graphics SHARED IMPORTED)
-    set_target_properties(sfml-graphics PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-graphics.so)
+# 3. Declarar las librerías de SFML como objetivos importados de forma directa
+add_library(sfml-graphics SHARED IMPORTED)
+set_target_properties(sfml-graphics PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-graphics.so)
 
-    add_library(sfml-window SHARED IMPORTED)
-    set_target_properties(sfml-window PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-window.so)
+add_library(sfml-window SHARED IMPORTED)
+set_target_properties(sfml-window PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-window.so)
 
-    add_library(sfml-system SHARED IMPORTED)
-    set_target_properties(sfml-system PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-system.so)
+add_library(sfml-system SHARED IMPORTED)
+set_target_properties(sfml-system PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-system.so)
 
-    add_library(sfml-audio SHARED IMPORTED)
-    set_target_properties(sfml-audio PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-audio.so)
+add_library(sfml-audio SHARED IMPORTED)
+set_target_properties(sfml-audio PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-audio.so)
 
-    add_library(sfml-network SHARED IMPORTED)
-    set_target_properties(sfml-network PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-network.so)
-endif()
+add_library(sfml-network SHARED IMPORTED)
+set_target_properties(sfml-network PROPERTIES IMPORTED_LOCATION ${SFML_LIB_DIR}/libsfml-network.so)
 
-# 4. Compilar tu app como librería compartida para NativeActivity
+# 4. CAMBIO CLAVE: Compilar tu app como librería compartida para NativeActivity
 add_library(MyApp SHARED
     main.cpp
 )
 
-# 5. Vincular las librerías
+# 5. Vincular las librerías utilizando los nombres de los targets
 target_link_libraries(MyApp PRIVATE
     sfml-graphics
     sfml-window
