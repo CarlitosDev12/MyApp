@@ -4,7 +4,7 @@ project(MyApp)
 # Encuentra SFML (asegúrate de que apunte a tu SDK/NDK o ruta de SFML)
 find_package(SFML 3.0 COMPONENTS graphics window system REQUIRED) # O la versión 2.6 según uses
 
-add_executable(MyApp 
+add_executable(MyApp
     app/src/main/cpp/main.cpp
 )
 
