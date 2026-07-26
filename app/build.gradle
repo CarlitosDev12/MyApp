@@ -40,3 +40,5 @@ android {
             path file('src/main/cpp/CMakeLists.txt')
             version '3.22.1' // O la versión de CMake que use tu entorno de compilación
         }
+    }
+}
