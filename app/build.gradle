@@ -42,3 +42,7 @@ android {
         }
     }
 }
+
+dependencies {
+    // Aquí van las dependencias de Java/Kotlin si las necesitas
+}
