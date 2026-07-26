@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED 20)
 # 1. Indicar dónde están los archivos .hpp de SFML
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-# 2. Definir la ruta de las librerías de forma segura
-set(SFML_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../jniLibs/${ANDROID_ABI})
+# 2. Definir la ruta correcta de las librerías según tu estructura actual
+set(SFML_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}) 
 
 # 3. Verificar si existen los binarios para esta arquitectura específica
 if(EXISTS "${SFML_LIB_DIR}/libsfml-graphics.so")
